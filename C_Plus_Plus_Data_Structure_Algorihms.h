@@ -44,19 +44,20 @@ Basic_Sort<T>::Basic_Sort (std::vector<T>& A, bool direct_sort) : reference_vect
 template <class T>
 Basic_Sort<T>::~Basic_Sort ()
 {
-    // Nothing
+    /* Do Nothing */
 }
 
 template <class T>
 void Basic_Sort<T>::printArray (const T arr[], int size)
 {
-    std::cout << "This Basic Sort, function printArray !" << std::endl;
+    // std::cout << "This Basic Sort, function printArray !" << std::endl;
+    /* Do Nothing */
 }
 
 template <class T>
 void Basic_Sort<T>::printVector (const std::vector<T>& vec)
 {
-    std::cout << "This Basic Sort,function printVector !" << std::endl;
+    // std::cout << "This Basic Sort,function printVector !" << std::endl;
 }
 
 /*****************************************************************************   SELECTION SORT   ****************************************************************************************/
@@ -454,7 +455,7 @@ void Insertion_Sort<T>::sort (void)
             }
             else
             {
-                // Nothing
+                /* Do Nothing */
             }
 
         }
@@ -489,14 +490,268 @@ void Insertion_Sort<T>::printVector(const std::vector<T>& vec)
 }
 
 
+/*******************************************************************************************************   MERGE SORT   *******************************************************************************************************************/
+/************************************** Merge Sort hoạt động bằng cách chia mảng thành các mảng nhỏ hơn và sắp xếp các mảng đó sau đó hợp nhất chúng lại với nhau để thu được mảng đã sắp xếp.  *******************************************/
+template <class  T>
+class Merge_Sort: public Basic_Sort<T>
+{
+public:
+    Merge_Sort (T A[], int size, bool direct_sort);
+    Merge_Sort (std::vector<T>& A, bool direct_sort);
+    ~Merge_Sort();
+    void divide(T vec[],unsigned int size);
+    void divide(std::vector<T>& vec);
+    void sortafterdivision(T vec[], int left, int mid, int right);
+    void sortafterdivision(std::vector<T>& vec, int left, int mid, int right);
+    void sort();
+    void printArray(const T arr[], int size) ;
+    void printVector(const std::vector<T>& vec) ;
+};
 
+template <class T>
+Merge_Sort<T>::Merge_Sort (T A[], int size, bool direct_sort): Basic_Sort<T>(A,size,direct_sort) /*reference_array(A), check_type_sort(1), size_list(size), direct_sort(direct_sort), reference_vector(dump)*/
+{
+    this->sort();
+}
 
+template <class T>
+Merge_Sort<T>::Merge_Sort (std::vector<T>& A, bool direct_sort): Basic_Sort<T>(A,direct_sort) /*reference_vector(A), check_type_sort(2), size_list(A.size()), direct_sort(direct_sort)*/
+{
+    this->sort();
+}
 
+template <class T>
+Merge_Sort<T>::~Merge_Sort ()
+{
+    if(Basic_Sort<T>::check_type_sort == 1)
+    {
+        std::cout << "The end Merge Sort Array !" << std::endl;
+    }
+    else if (Basic_Sort<T>::check_type_sort == 2)
+    {
+        std::cout << "The end Merge Sort Vector !" << std::endl;
+    }
+    Basic_Sort<T>::check_type_sort = 0;
+}
 
+template <class T>
+void Merge_Sort<T>::sort (void)
+{
+    if(Basic_Sort<T>::check_type_sort == 1)
+    {    
+        int n = Basic_Sort<T>::size_list;
+        for (int size = 1; size < n; size *= 2) 
+        {
+            for (int left = 0; left < n - 1; left += 2 * size) 
+            {
+                int mid   = std::min(left + size - 1, n - 1);
+                int right = std::min(left + 2 * size - 1, n - 1);
+                // std::cout << "left:"  << left   << " ";
+                // std::cout << "mid:"   << mid   << " ";
+                // std::cout << "right:" << right << " ";
+                // std::cout << std::endl;
+                
+                sortafterdivision(Basic_Sort<T>::reference_array, left, mid, right);
+            }
+        }
+        this->printArray(Basic_Sort<T>::reference_array, Basic_Sort<T>::size_list);
+    }
+    else if(Basic_Sort<T>::check_type_sort == 2)
+    {
+        int n = Basic_Sort<T>::reference_vector.size();
+        for (int size = 1; size < n; size *= 2) 
+        {
+            for (int left = 0; left < n - 1; left += 2 * size) 
+            {
+                int mid   = std::min(left + size - 1, n - 1);
+                int right = std::min(left + 2 * size - 1, n - 1);
+                // std::cout << "left:"  << left   << " ";
+                // std::cout << "mid:"   << mid   << " ";
+                // std::cout << "right:" << right << " ";
+                // std::cout << std::endl;
+                
+                sortafterdivision(Basic_Sort<T>::reference_vector, left, mid, right);
+            }
+        }
+        this->printVector(Basic_Sort<T>::reference_vector);      
+    }
+}
 
+template <class T>
+void Merge_Sort<T>:: sortafterdivision(T array[], int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
 
+    // std::cout << "n1:"  << n1   << " ";
+    // std::cout << "n2:"   << n2   << " ";
+    // std::cout << std::endl;
 
+    T L[n1] = {0};
+    T R[n2] = {0};
+    
+    for (int i = 0; i < n1; i++)
+    {
+        L[i] = array[left + i];
+        // std::cout << "array[left + i]: "  <<  array[left + i]   << " ";
+    }
 
+    for (int j = 0; j < n2; j++)
+    {
+        R[j] = array[mid + 1 + j];
+        // std::cout << "array[mid + 1 + j]: "  <<  array[mid + 1 + j]   << " ";
+    }
+    // std::cout << std::endl;
+    
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) 
+    {
+        if(Basic_Sort<T>::direct_sort == 0)
+        {
+            if (L[i] <= R[j]) 
+            {
+                array[k] = L[i];
+                i++;
+            } 
+            else 
+            {
+                array[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        else if (Basic_Sort<T>::direct_sort == 1)
+        {
+            if (L[i] >= R[j]) 
+            {
+                array[k] = L[i];
+                i++;
+            } 
+            else 
+            {
+                array[k] = R[j];
+                j++;
+            }
+            k++;            
+        }
+    }
+    
+    while (i < n1) 
+    {
+        array[k] = L[i];
+        i++;
+        k++;
+    }
+    
+    while (j < n2) 
+    {
+        array[k] = R[j];
+        j++;
+        k++;
+    }  
+}
+
+template <class T>
+void Merge_Sort<T>:: sortafterdivision(std::vector<T>& vec, int left, int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    // std::cout << "n1:"  << n1   << " ";
+    // std::cout << "n2:"   << n2   << " ";
+    // std::cout << std::endl;
+
+    T L[n1] = {0};
+    T R[n2] = {0};
+    
+    for (int i = 0; i < n1; i++)
+    {
+        L[i] = vec[left + i];
+        // std::cout << "vec[left + i]: "  <<  vec[left + i]   << " ";
+    }
+
+    for (int j = 0; j < n2; j++)
+    {
+        R[j] = vec[mid + 1 + j];
+        // std::cout << "vec[mid + 1 + j]: "  <<  vec[mid + 1 + j]   << " ";
+    }
+    // std::cout << std::endl;
+    
+    int i = 0, j = 0, k = left;
+
+    while (i < n1 && j < n2) 
+    {
+        if(Basic_Sort<T>::direct_sort == 0)
+        {
+            if (L[i] <= R[j]) 
+            {
+                vec[k] = L[i];
+                i++;
+            } 
+            else 
+            {
+                vec[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        else if (Basic_Sort<T>::direct_sort == 1)
+        {
+            if (L[i] >= R[j]) 
+            {
+                vec[k] = L[i];
+                i++;
+            } 
+            else 
+            {
+                vec[k] = R[j];
+                j++;
+            }
+            k++;            
+        }
+    }
+    
+    while (i < n1) 
+    {
+        vec[k] = L[i];
+        i++;
+        k++;
+    }
+    
+    while (j < n2) 
+    {
+        vec[k] = R[j];
+        j++;
+        k++;
+    }  
+}
+
+template <class T>
+void Merge_Sort<T>::printArray(const T arr[], int size)
+{
+    std::cout << "Merge Sort Array:";
+    std::cout << std::endl;
+
+    for (int i = 0; i < size; i++) 
+    {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+template <class T>
+void Merge_Sort<T>::printVector(const std::vector<T>& vec) 
+{
+    std::cout << "Merge Sort Vector:";
+    std::cout << std::endl;
+
+    for (const auto& element : vec) 
+    {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+}
 
 
 
