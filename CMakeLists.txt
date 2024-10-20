@@ -21,6 +21,31 @@ set(SOURCES C_Plus_Plus_Data_Structure_Algorihms.cpp)
 # Thêm tệp nguồn vào project
 add_executable(MyCppProject ${SOURCES})
 
+# Thu thập tất cả các tệp .cpp trong thư mục
+file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/*.cpp")
+
+# Lặp lại qua từng tệp .cpp để tạo tệp .ii tương ứng
+foreach(SOURCE_FILE ${SOURCE_FILES})
+    # Lấy tên tệp không có phần mở rộng (ví dụ: main hoặc foo)
+    get_filename_component(FILENAME_WE ${SOURCE_FILE} NAME_WE)
+    
+    # Gọi add_custom_command cho từng tệp nguồn, add_custom_command sẽ add các lệnh custom để xử lí cho từng tệp tương ứng
+    add_custom_command(
+        OUTPUT ${CMAKE_BINARY_DIR}/${FILENAME_WE}.ii
+        COMMAND ${CMAKE_CXX_COMPILER} -E ${SOURCE_FILE} -o ${CMAKE_BINARY_DIR}/${FILENAME_WE}.ii
+        DEPENDS ${SOURCE_FILE}
+        COMMENT "Generating preprocessed file ${FILENAME_WE}.ii"
+    )
+    
+    # Tạo target tùy chỉnh cho mỗi file source, được hiểu là để xuất file .ii cho từng file source
+    add_custom_target(${FILENAME_WE}_preprocess ALL
+        DEPENDS ${CMAKE_BINARY_DIR}/${FILENAME_WE}.ii
+    )
+
+    # Đảm bảo rằng quá trình build của MyCppProject sẽ phụ thuộc vào việc tạo các file .ii, do đó "quá trình tiền xử lý" sẽ được thực hiện "trước" khi biên dịch
+    add_dependencies(MyCppProject ${FILENAME_WE}_preprocess)
+endforeach()
+
 # (Tùy chọn) Thêm các thư viện ngoài nếu có
 # target_link_libraries(MyCppProject PRIVATE some_library)
 
