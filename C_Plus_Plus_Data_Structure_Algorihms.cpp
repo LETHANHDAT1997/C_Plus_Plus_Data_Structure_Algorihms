@@ -1,35 +1,74 @@
 #include "C_Plus_Plus_Data_Structure_Algorihms.h"
+#include "C_Plus_Plus_Random_Data_Algorihms.h"
+
+#define SIZE 100
 
 int main(void)
 {
-    /* Mảng kiểu float */
-    float floatArr[] = {74.5, 74.5, 35.3, 35.3, 22.7, 32.1, 21.9, 21.9};
-    int size = sizeof(floatArr) / sizeof(floatArr[0]);
-    /* Vector kiểu float */
-    std::vector<float> floatVec = {64.5, 64.5, 25.3, 22.1, 12.7, 11.9, 11.9};
+    // Sử dụng RandomGenerator với vector float 
+    RandomGenerator<float> RandomVector;
+    std::vector<float> floatVec = RandomVector.generateRandomVector(SIZE, 1, 100);
+    std::cout << "Random Vector (int): ";
+    for (float num : floatVec) 
+    {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
+
+    // Sử dụng RandomGenerator với array int
+    RandomGenerator<float> RandomArray;
+    float* floatArr = RandomArray.generateRandomArray(SIZE, 1, 100);
+    std::cout << "Random Array (float): ";
+    for (size_t i = 0; i < SIZE; ++i) 
+    {
+        std::cout << floatArr[i] << " ";
+    }
+    std::cout << "\n";
+    std::cout << "" << std::endl;
 
     // Ghi nhận thời điểm bắt đầu
     auto start = std::chrono::high_resolution_clock::now();    
 
     /* Selection_Sort */
-    Selection_Sort<float> SSortVec(floatVec,MIN_TO_MAX);
-    Selection_Sort<float> SSortArr(floatArr,size,MIN_TO_MAX);
-
+    std::cout << "-------------------------------------------------------------Selection_Sort-------------------------------------------------------------" << std::endl;
+    SelectionSort<float> SelectionVector(floatVec, SortDirection::Ascending);
+    SelectionVector.sort();
+    SelectionVector.print();
+    SelectionSort<float> SelectionArray(floatArr,SIZE, SortDirection::Ascending);
+    SelectionArray.sort();
+    SelectionArray.print();
+    std::cout << "" << std::endl;
+    
     /* Bubble_Sort */
-    Bubble_Sort<float> BSortVec(floatVec,MIN_TO_MAX);
-    Bubble_Sort<float> BSortArr(floatArr,size,MIN_TO_MAX);
+    std::cout << "-------------------------------------------------------------Bubble_Sort-------------------------------------------------------------" << std::endl;
+    BubbleSort<float> BubbleSortVector(floatVec, SortDirection::Ascending);
+    BubbleSortVector.sort();
+    BubbleSortVector.print();
+    BubbleSort<float> BubbleSortArray(floatArr,SIZE, SortDirection::Ascending);
+    BubbleSortArray.sort();
+    BubbleSortArray.print();
+    std::cout << "" << std::endl;
 
     /* Insertion_Sort */
-    Insertion_Sort<float> ISortVec(floatVec,MAX_TO_MIN);
-    Insertion_Sort<float> ISortArr(floatArr,size,MAX_TO_MIN);
+    std::cout << "-------------------------------------------------------------Insertion_Sort-------------------------------------------------------------" << std::endl;
+    InsertionSort<float> InsertionSortVector(floatVec, SortDirection::Ascending);
+    InsertionSortVector.sort();
+    InsertionSortVector.print();
+    InsertionSort<float> BInsertionSortArray(floatArr,SIZE, SortDirection::Ascending);
+    BInsertionSortArray.sort();
+    BInsertionSortArray.print();
+    std::cout << "" << std::endl;
 
     /* Merge_Sort */
-    Merge_Sort<float> MerSortVec(floatVec,MIN_TO_MAX);
-    Merge_Sort<float> MerSortArr(floatArr,size,MIN_TO_MAX);
-
-    /* Merge_Sort */
-    // mergeSortIterative(floatVec);
-    // printVector(floatVec);
+    std::cout << "-------------------------------------------------------------Merge_Sort-------------------------------------------------------------" << std::endl;
+    MergeSort<float> MergeSortVector(floatVec, SortDirection::Ascending);
+    MergeSortVector.sort();
+    MergeSortVector.print();
+    MergeSort<float> MergeSortArray(floatArr,SIZE, SortDirection::Ascending);
+    MergeSortArray.sort();
+    MergeSortArray.print();
+    std::cout << "" << std::endl;
+ 
 
     // Ghi nhận thời điểm kết thúc
     auto end = std::chrono::high_resolution_clock::now();

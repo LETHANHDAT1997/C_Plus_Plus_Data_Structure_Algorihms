@@ -56,6 +56,7 @@
         "forward_list": "cpp",
         "iomanip": "cpp",
         "sstream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "random": "cpp"
     }
 }

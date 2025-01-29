@@ -128,6 +128,32 @@ MyCppProject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\MyCppProject.dir\build.make CMakeFiles/MyCppProject.dir/build
 .PHONY : MyCppProject/fast
 
+#=============================================================================
+# Target rules for targets named C_Plus_Plus_Data_Structure_Algorihms_preprocess
+
+# Build rule for target.
+C_Plus_Plus_Data_Structure_Algorihms_preprocess: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 C_Plus_Plus_Data_Structure_Algorihms_preprocess
+.PHONY : C_Plus_Plus_Data_Structure_Algorihms_preprocess
+
+# fast build rule for target.
+C_Plus_Plus_Data_Structure_Algorihms_preprocess/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\C_Plus_Plus_Data_Structure_Algorihms_preprocess.dir\build.make CMakeFiles/C_Plus_Plus_Data_Structure_Algorihms_preprocess.dir/build
+.PHONY : C_Plus_Plus_Data_Structure_Algorihms_preprocess/fast
+
+#=============================================================================
+# Target rules for targets named CMakeCXXCompilerId_preprocess
+
+# Build rule for target.
+CMakeCXXCompilerId_preprocess: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeCXXCompilerId_preprocess
+.PHONY : CMakeCXXCompilerId_preprocess
+
+# fast build rule for target.
+CMakeCXXCompilerId_preprocess/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\CMakeCXXCompilerId_preprocess.dir\build.make CMakeFiles/CMakeCXXCompilerId_preprocess.dir/build
+.PHONY : CMakeCXXCompilerId_preprocess/fast
+
 C_Plus_Plus_Data_Structure_Algorihms.obj: C_Plus_Plus_Data_Structure_Algorihms.cpp.obj
 .PHONY : C_Plus_Plus_Data_Structure_Algorihms.obj
 
@@ -160,6 +186,8 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... CMakeCXXCompilerId_preprocess
+	@echo ... C_Plus_Plus_Data_Structure_Algorihms_preprocess
 	@echo ... MyCppProject
 	@echo ... C_Plus_Plus_Data_Structure_Algorihms.obj
 	@echo ... C_Plus_Plus_Data_Structure_Algorihms.i
