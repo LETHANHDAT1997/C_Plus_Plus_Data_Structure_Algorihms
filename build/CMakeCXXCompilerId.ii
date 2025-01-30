@@ -1,14 +1,16 @@
-# 0 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 0 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
-# 434 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 1 "/usr/include/stdc-predef.h" 1 3 4
+# 0 "<command-line>" 2
+# 1 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 421 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
 char const* info_compiler = "INFO" ":" "compiler[" "GNU" "]";
-# 755 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 734 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
 char const info_version[] = {
   'I', 'N', 'F', 'O', ':',
   'c','o','m','p','i','l','e','r','_','v','e','r','s','i','o','n','[',
-  ('0' + (((14) / 10000000)%10)), ('0' + (((14) / 1000000)%10)), ('0' + (((14) / 100000)%10)), ('0' + (((14) / 10000)%10)), ('0' + (((14) / 1000)%10)), ('0' + (((14) / 100)%10)), ('0' + (((14) / 10)%10)), ('0' + ((14) % 10)),
+  ('0' + (((12) / 10000000)%10)), ('0' + (((12) / 1000000)%10)), ('0' + (((12) / 100000)%10)), ('0' + (((12) / 10000)%10)), ('0' + (((12) / 1000)%10)), ('0' + (((12) / 100)%10)), ('0' + (((12) / 10)%10)), ('0' + ((12) % 10)),
 
   '.', ('0' + (((2) / 10000000)%10)), ('0' + (((2) / 1000000)%10)), ('0' + (((2) / 100000)%10)), ('0' + (((2) / 10000)%10)), ('0' + (((2) / 1000)%10)), ('0' + (((2) / 100)%10)), ('0' + (((2) / 10)%10)), ('0' + ((2) % 10)),
 
@@ -19,10 +21,10 @@ char const info_version[] = {
 
 
   ']','\0'};
-# 804 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
-char const* info_platform = "INFO" ":" "platform[" "MinGW" "]";
+# 783 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+char const* info_platform = "INFO" ":" "platform[" "Linux" "]";
 char const* info_arch = "INFO" ":" "arch[" "]";
-# 825 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 804 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
 const char* info_language_standard_default = "INFO" ":" "standard_default["
 
 
@@ -59,7 +61,7 @@ int main(int argc, char* argv[])
   require += info_arch[argc];
 
   require += info_version[argc];
-# 874 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.29.0/CompilerIdCXX/CMakeCXXCompilerId.cpp"
+# 853 "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.cpp"
   require += info_language_standard_default[argc];
   require += info_language_extensions_default[argc];
   (void)argv;

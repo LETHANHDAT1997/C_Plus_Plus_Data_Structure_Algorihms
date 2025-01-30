@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.16)
 
 # Đặt tên cho project
-project(MyCppProject)
+project(C_Plus_Plus_Data_Structure_Algorihms)
 
 # Đặt tiêu chuẩn C++
 set(CMAKE_CXX_STANDARD 17)
@@ -19,7 +19,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(SOURCES C_Plus_Plus_Data_Structure_Algorihms.cpp)
 
 # Thêm tệp nguồn vào project
-add_executable(MyCppProject ${SOURCES})
+add_executable(C_Plus_Plus_Data_Structure_Algorihms ${SOURCES})
 
 # Thu thập tất cả các tệp .cpp trong thư mục
 file(GLOB_RECURSE SOURCE_FILES "${CMAKE_SOURCE_DIR}/*.cpp")
@@ -43,7 +43,7 @@ foreach(SOURCE_FILE ${SOURCE_FILES})
     )
 
     # Đảm bảo rằng quá trình build của MyCppProject sẽ phụ thuộc vào việc tạo các file .ii, do đó "quá trình tiền xử lý" sẽ được thực hiện "trước" khi biên dịch
-    add_dependencies(MyCppProject ${FILENAME_WE}_preprocess)
+    add_dependencies(C_Plus_Plus_Data_Structure_Algorihms ${FILENAME_WE}_preprocess)
 endforeach()
 
 # (Tùy chọn) Thêm các thư viện ngoài nếu có

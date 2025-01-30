@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/C_Plus_Plus_Data_Structure_Algorihms.dir/C_Plus_Plus_Data_Structure_Algorihms.cpp.o -o C_Plus_Plus_Data_Structure_Algorihms 

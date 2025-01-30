@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/ledat/Documents/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp" "CMakeFiles/C_Plus_Plus_Data_Structure_Algorihms.dir/C_Plus_Plus_Data_Structure_Algorihms.cpp.o" "gcc" "CMakeFiles/C_Plus_Plus_Data_Structure_Algorihms.dir/C_Plus_Plus_Data_Structure_Algorihms.cpp.o.d"
   )
 
 # Targets to which this target links.
