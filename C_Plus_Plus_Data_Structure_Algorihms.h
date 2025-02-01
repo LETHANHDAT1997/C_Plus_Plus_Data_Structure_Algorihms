@@ -136,17 +136,15 @@ public:
         while (j < n2) this->data[k++] = R[j++];
     }
 
-    void mergeSort(int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-            mergeSort(left, mid);
-            mergeSort(mid + 1, right);
-            merge(left, mid, right);
-        }
-    }
-
     void sort() override {
-        mergeSort(0, this->size - 1);
+        int n = this->size;
+        for (int curr_size = 1; curr_size < n; curr_size = 2 * curr_size) {
+            for (int left = 0; left < n - 1; left += 2 * curr_size) {
+                int mid = std::min(left + curr_size - 1, n - 1);
+                int right = std::min((left + 2 * curr_size - 1), (n - 1));
+                merge(left, mid, right);
+            }
+        }
     }
 };
 
