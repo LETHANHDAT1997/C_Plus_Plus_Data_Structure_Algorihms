@@ -1,0 +1,26 @@
+# Ignore build directory
+build/
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ignore intermediate files
+*.ii
+*.obj.d
+*.o
+*.obj
+*.exe
+*.out
+*.log
+
+# Ignore other temporary files
+*.tmp
+*.marks
+*.yaml
+*.txt
+
+# Ignore VS Code settings
+.vscode/
