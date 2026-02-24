@@ -50289,17 +50289,15 @@ public:
         while (j < n2) this->data[k++] = R[j++];
     }
 
-    void mergeSort(int left, int right) {
-        if (left < right) {
-            int mid = left + (right - left) / 2;
-            mergeSort(left, mid);
-            mergeSort(mid + 1, right);
-            merge(left, mid, right);
-        }
-    }
-
     void sort() override {
-        mergeSort(0, this->size - 1);
+        int n = this->size;
+        for (int curr_size = 1; curr_size < n; curr_size = 2 * curr_size) {
+            for (int left = 0; left < n - 1; left += 2 * curr_size) {
+                int mid = std::min(left + curr_size - 1, n - 1);
+                int right = std::min((left + 2 * curr_size - 1), (n - 1));
+                merge(left, mid, right);
+            }
+        }
     }
 };
 # 2 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp" 2
@@ -69077,77 +69075,23 @@ public:
 int main(void)
 {
 
-
-
-
-
-
-
     RandomGenerator<float> RandomVector;
-    std::vector<float> floatVec = RandomVector.generateRandomVector(100, 1, 100);
-    std::cout << "Random Vector (int): ";
-    for (float num : floatVec)
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
-
-
+    std::vector<float> floatVec = RandomVector.generateRandomVector(100000, 1, 100);
+# 19 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp"
     RandomGenerator<float> RandomArray;
-    float* floatArr = RandomArray.generateRandomArray(100, 1, 100);
-    std::cout << "Random Array (float): ";
-    for (size_t i = 0; i < 100; ++i)
-    {
-        std::cout << floatArr[i] << " ";
-    }
-    std::cout << "\n";
-    std::cout << "" << std::endl;
-
-
+    float* floatArr = RandomArray.generateRandomArray(100000, 1, 100);
+# 30 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp"
     auto start = std::chrono::high_resolution_clock::now();
-
-
-    std::cout << "-------------------------------------------------------------Selection_Sort-------------------------------------------------------------" << std::endl;
-    SelectionSort<float> SelectionVector(floatVec, SortDirection::Ascending);
-    SelectionVector.sort();
-    SelectionVector.print();
-    SelectionSort<float> SelectionArray(floatArr,100, SortDirection::Ascending);
-    SelectionArray.sort();
-    SelectionArray.print();
-    std::cout << "" << std::endl;
-
-
-    std::cout << "-------------------------------------------------------------Bubble_Sort-------------------------------------------------------------" << std::endl;
-    BubbleSort<float> BubbleSortVector(floatVec, SortDirection::Ascending);
-    BubbleSortVector.sort();
-    BubbleSortVector.print();
-    BubbleSort<float> BubbleSortArray(floatArr,100, SortDirection::Ascending);
-    BubbleSortArray.sort();
-    BubbleSortArray.print();
-    std::cout << "" << std::endl;
-
-
+# 53 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp"
     std::cout << "-------------------------------------------------------------Insertion_Sort-------------------------------------------------------------" << std::endl;
     InsertionSort<float> InsertionSortVector(floatVec, SortDirection::Ascending);
     InsertionSortVector.sort();
     InsertionSortVector.print();
-    InsertionSort<float> BInsertionSortArray(floatArr,100, SortDirection::Ascending);
+    InsertionSort<float> BInsertionSortArray(floatArr,100000, SortDirection::Ascending);
     BInsertionSortArray.sort();
     BInsertionSortArray.print();
     std::cout << "" << std::endl;
-
-
-    std::cout << "-------------------------------------------------------------Merge_Sort-------------------------------------------------------------" << std::endl;
-    MergeSort<float> MergeSortVector(floatVec, SortDirection::Ascending);
-    MergeSortVector.sort();
-    MergeSortVector.print();
-    MergeSort<float> MergeSortArray(floatArr,100, SortDirection::Ascending);
-    MergeSortArray.sort();
-    MergeSortArray.print();
-    std::cout << "" << std::endl;
-
-
-
+# 74 "D:/C_project/C_Plus_Plus_Data_Structure_Algorihms/C_Plus_Plus_Data_Structure_Algorihms.cpp"
     auto end = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<double, std::milli> elapsed = end - start;
