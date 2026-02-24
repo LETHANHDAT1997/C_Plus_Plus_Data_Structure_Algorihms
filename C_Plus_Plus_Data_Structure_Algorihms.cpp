@@ -59,16 +59,22 @@ int main(void)
     // BInsertionSortArray.print();
     // std::cout << "" << std::endl;
 
-    /* Merge_Sort */
-    std::cout << "-------------------------------------------------------------Merge_Sort-------------------------------------------------------------" << std::endl;
-    MergeSort<float> MergeSortVector(floatVec, SortDirection::Ascending);
-    MergeSortVector.sort();
-    // MergeSortVector.print();
-    MergeSort<float> MergeSortArray(floatArr,SIZE, SortDirection::Ascending);
-    MergeSortArray.sort();
-    // MergeSortArray.print();
-    std::cout << "" << std::endl;
+    // /* Merge_Sort */
+    // std::cout << "-------------------------------------------------------------Merge_Sort-------------------------------------------------------------" << std::endl;
+    // MergeSort<float> MergeSortVector(floatVec, SortDirection::Ascending);
+    // MergeSortVector.sort();
+    // // MergeSortVector.print();
+    // MergeSort<float> MergeSortArray(floatArr,SIZE, SortDirection::Ascending);
+    // MergeSortArray.sort();
+    // // MergeSortArray.print();
+    // std::cout << "" << std::endl;
  
+    /* Quick_Sort */
+    std::cout << "-------------------------------------------------------------Quick_Sort-------------------------------------------------------------" << std::endl;
+    QuickSort<float> QuickSortVector(floatVec, SortDirection::Ascending);
+    QuickSortVector.sort();
+    QuickSort<float> QuickSortArray(floatArr, SIZE, SortDirection::Ascending);
+    QuickSortArray.sort();
 
     // Ghi nhận thời điểm kết thúc
     auto end = std::chrono::high_resolution_clock::now();

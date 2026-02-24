@@ -102,6 +102,41 @@ public:
     }
 };
 
+// Quick Sort
+template <typename T>
+class QuickSort : public BasicSort<T> {
+public:
+    using BasicSort<T>::BasicSort;
+
+    int partition(int low, int high) {
+        T pivot = this->data[high];
+        int i = low - 1;
+
+        for (int j = low; j < high; ++j) {
+            if ((this->direction == SortDirection::Ascending && this->data[j] <= pivot) ||
+                (this->direction == SortDirection::Descending && this->data[j] >= pivot)) {
+                ++i;
+                std::swap(this->data[i], this->data[j]);
+            }
+        }
+        std::swap(this->data[i + 1], this->data[high]);
+        return i + 1;
+    }
+
+    void quickSort(int low, int high) {
+        if (low < high) {
+            int pi = partition(low, high);
+            quickSort(low, pi - 1);
+            quickSort(pi + 1, high);
+        }
+    }
+
+    void sort() override {
+        if (this->size > 0)
+            quickSort(0, static_cast<int>(this->size) - 1);
+    }
+};
+
 // Merge Sort
 template <typename T>
 class MergeSort : public BasicSort<T> {
