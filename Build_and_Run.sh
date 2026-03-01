@@ -30,4 +30,4 @@ else
     exit 1
 fi
 
-sudo ./C_Plus_Plus_Data_Structure_Algorihms
+sudo ./MyCppProject
