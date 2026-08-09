@@ -12,12 +12,18 @@ public:
     T* generateRandomArray(size_t size, T minVal, T maxVal) {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<T> distrib(minVal, maxVal); // Dùng uniform_real_distribution cho kiểu float
 
-        // Cấp phát bộ nhớ cho mảng động
+        // FIX: Dùng if constexpr để phân biệt kiểu số thực và số nguyên,
+        // tránh lỗi biên dịch khi T = int (uniform_real_distribution không hỗ trợ kiểu nguyên).
         T* arr = new T[size];
-        for (size_t i = 0; i < size; ++i) {
-            arr[i] = distrib(gen);
+        if constexpr (std::is_floating_point_v<T>) {
+            std::uniform_real_distribution<T> distrib(minVal, maxVal);
+            for (size_t i = 0; i < size; ++i)
+                arr[i] = distrib(gen);
+        } else {
+            std::uniform_int_distribution<T> distrib(minVal, maxVal);
+            for (size_t i = 0; i < size; ++i)
+                arr[i] = distrib(gen);
         }
         return arr;
     }
@@ -26,11 +32,17 @@ public:
     std::vector<T> generateRandomVector(size_t size, T minVal, T maxVal) {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<T> distrib(minVal, maxVal);
 
+        // FIX: Dùng if constexpr để phân biệt kiểu số thực và số nguyên
         std::vector<T> vec(size);
-        for (size_t i = 0; i < size; ++i) {
-            vec[i] = distrib(gen);
+        if constexpr (std::is_floating_point_v<T>) {
+            std::uniform_real_distribution<T> distrib(minVal, maxVal);
+            for (size_t i = 0; i < size; ++i)
+                vec[i] = distrib(gen);
+        } else {
+            std::uniform_int_distribution<T> distrib(minVal, maxVal);
+            for (size_t i = 0; i < size; ++i)
+                vec[i] = distrib(gen);
         }
         return vec;
     }
